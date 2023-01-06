@@ -1,0 +1,22 @@
+node* middle(node* &head){
+    
+    
+    if(head == NULL || head->next == NULL)
+        return head;
+    
+    node* fast = head->next;
+    node* slow = head;
+    
+        while(fast -> next != NULL ){
+            
+            fast= fast->next;
+            
+            if(fast->next!= NULL){
+                fast = fast ->next;
+            }
+            slow = slow->next;
+            
+        }
+        return slow;
+    
+};
