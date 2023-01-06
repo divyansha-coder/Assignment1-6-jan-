@@ -139,6 +139,50 @@ node * reverse_(node* &head,node* &tail){
     
     return head;
 }
+void k_fromlast(int k , node* &head ){
+    
+    node* fast = head;
+    node* slow = head;
+    
+    if(head==NULL){
+        cout<<"THE LIST IS EMPTY"<< endl;
+        return;
+    }
+    
+   for(int i =0;i<k;i++){
+         fast = fast->next;}
+    
+    
+   while(fast-> next != NULL ){
+        fast = fast->next;
+        slow = slow->next;
+    }
+    cout<< slow->data<< endl;
+    return;
+};
+ 
+node* middle(node* &head){
+    
+    
+    if(head == NULL || head->next == NULL)
+        return head;
+    
+    node* fast = head->next;
+    node* slow = head;
+    
+        while(fast -> next != NULL ){
+            
+            fast= fast->next;
+            
+            if(fast->next!= NULL){
+                fast = fast ->next;
+            }
+            slow = slow->next;
+            
+        }
+        return slow;
+    
+};
 
 int length(node*head){
     
@@ -178,9 +222,12 @@ int main() {
     insert_last(tail,head, 9);
     insert_index(head, tail, 2 , 6, length(head));
     
-    reverse_(head, tail);
+    //reverse_(head, tail);
     //remove_last(head, tail);
+    //k_fromlast(2, head );
+    //printNthFromLast(head, 2);
     print(head);
+    cout<<middle(head)->data<<endl;
     cout<<"head has the value "<<head->data<<endl;
     cout<<"tail has the value "<<tail->data<<endl;
     
