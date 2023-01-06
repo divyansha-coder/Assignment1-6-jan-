@@ -20,6 +20,15 @@ class node{
         this->next= NULL;
     }
     
+    //destructor
+    ~node(){
+        int value = this ->data;
+        if(this->next != NULL){
+            delete next;
+            this->next = NULL;
+        }
+        cout <<" memory is free for node with value "<< value << endl;
+    }
    
     
 };
@@ -81,6 +90,29 @@ void insert_index(node* &head , node* &tail ,int index , int value , int size){
         pointer->next = temp;
         
     }
+}
+
+void remove_last(node* &head , node* &tail){
+    
+    if(head == tail && tail == NULL){
+        cout<<" no element present";
+        return;
+    }
+    else if(head==tail){
+        delete head;
+        head = tail = NULL;
+        return;
+    }
+        
+    else{
+        node * temp = head;
+        
+        while (temp->next != tail) {
+            temp = temp->next;
+        }
+        temp->next = NULL;
+        delete tail;
+        tail = temp;}
     
     
 }
@@ -122,6 +154,8 @@ int main() {
     insert_first(head,tail , 1);
     insert_last(tail,head, 9);
     insert_index(head, tail, 2 , 6, length(head));
+    
+    remove_last(head, tail);
     print(head);
     cout<<"head has the value "<<head->data<<endl;
     cout<<"tail has the value "<<tail->data<<endl;
