@@ -1,0 +1,25 @@
+linkedlist* merge(linkedlist*l1 , linkedlist*l2){
+    linkedlist* result = new linkedlist();
+    node*node1= l1 -> head;
+    node*node2 = l2-> head;
+    while(node1 != NULL && node2 != NULL){
+        if(node1->data < node2->data){
+            insert_last(result->tail, result->head, node1->data);
+            node1=node1->next;
+        }
+        else{
+                insert_last(result->tail, result->head, node2->data);
+                node2=node2->next;
+            }
+            }
+    while(node1 != NULL){
+        insert_last(result->tail, result->head, node1->data);
+        node1=node1->next;
+    }
+    while(node2 != NULL){
+        insert_last(result->tail, result->head, node2->data);
+        node2=node2->next;
+    }
+    
+    return result;
+};
