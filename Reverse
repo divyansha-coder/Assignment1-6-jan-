@@ -1,0 +1,23 @@
+node * reverse_(node* &head,node* &tail){
+    node*prev=NULL;
+    node*curr=head;
+    node*forward = NULL;
+    
+    if(head == NULL){
+        return head;
+    }
+    if (head->next == NULL){
+        return head;
+    }
+    while(curr != NULL){
+        forward=curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr=forward;
+        }
+    tail = head;
+    head = prev;
+    
+    
+    return head;
+}
