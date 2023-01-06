@@ -116,6 +116,29 @@ void remove_last(node* &head , node* &tail){
     
     
 }
+node * reverse_(node* &head,node* &tail){
+    node*prev=NULL;
+    node*curr=head;
+    node*forward = NULL;
+    
+    if(head == NULL){
+        return head;
+    }
+    if (head->next == NULL){
+        return head;
+    }
+    while(curr != NULL){
+        forward=curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr=forward;
+        }
+    tail = head;
+    head = prev;
+    
+    
+    return head;
+}
 
 int length(node*head){
     
@@ -155,7 +178,8 @@ int main() {
     insert_last(tail,head, 9);
     insert_index(head, tail, 2 , 6, length(head));
     
-    remove_last(head, tail);
+    reverse_(head, tail);
+    //remove_last(head, tail);
     print(head);
     cout<<"head has the value "<<head->data<<endl;
     cout<<"tail has the value "<<tail->data<<endl;
