@@ -20,6 +20,8 @@ class node{
         this->next= NULL;
     }
     
+   
+    
 };
 // function to add first in linked list
 void insert_first(node* &head ,node* &tail ,int value){
@@ -34,9 +36,69 @@ void insert_first(node* &head ,node* &tail ,int value){
     }
     
 }
+
+void insert_last(node* &tail ,node* &head, int value){
+    //new node creation with value given
+    node * temp = new node(value);
+    //placing it at last position
+    if(tail == NULL){
+        tail = head = temp;
+    }
+    tail->next = temp;
+    //making it the tail
+    tail = temp;
+    
+    
+    
+}
+
+
+void insert_index(node* &head , node* &tail ,int index , int value , int size){
+    
+    //create a node
+    node*temp = new node(value);
+    node*pointer = head;
+    
+    if(index <= 0 || index > size + 1 ){
+        cout<<"invalid"<<endl;
+        return;
+    }
+    else if (index == 1){
+        insert_first(head, tail, value);
+        return;
+    }
+    else if(index == size+1){
+        insert_last(tail, head, value);
+        return;
+    }
+    else{
+        int count =1;
+        while(count < index-1){
+            pointer = pointer-> next;
+            count ++;
+        }
+        temp ->next = pointer -> next ;
+        pointer->next = temp;
+        
+    }
+    
+    
+}
+
+int length(node*head){
+    
+    int count=0;
+    while(head != NULL){
+        count++;
+        head = head ->next;
+    }
+        
+    
+    return count;
+}
  
 void print(node* &head){
-    //not using head because we don't want the head to actually iterate
+    //
     node* temp = head;
     if(temp == NULL)
         cout<<"The list is empty";
@@ -58,7 +120,13 @@ int main() {
     //updating the head and tail of node
     head = tail = node1;
     insert_first(head,tail , 1);
+    insert_last(tail,head, 9);
+    insert_index(head, tail, 2 , 6, length(head));
     print(head);
+    cout<<"head has the value "<<head->data<<endl;
+    cout<<"tail has the value "<<tail->data<<endl;
+    
+    cout<<"the length is "<<length(head)<<endl;
     
     return 0;
    
