@@ -1,0 +1,22 @@
+ 
+    
+// function to add first in linked list
+void insert_first(node* &head ,node* &tail ,int value){
+    
+    //new node creation with value given
+    node * temp = new node(value);
+    
+    //placing it at first/head position
+    temp->next = head;
+    
+    //making it the head
+    head = temp;
+    
+    if(head -> next == NULL){
+        tail = temp;
+    }
+    
+}
+
+
+   

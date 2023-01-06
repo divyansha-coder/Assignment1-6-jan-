@@ -1,0 +1,32 @@
+void insert_index(node* &head , node* &tail ,int index , int value , int size){
+    
+    //create a node
+    node*temp = new node(value);
+    node*pointer = head;
+    
+    if(index <= 0 || index > size + 1 ){
+        cout<<"invalid"<<endl;
+        return;
+    }
+    else if (index == 1){
+        insert_first(head, tail, value);
+        return;
+    }
+    else if(index == size+1){
+        insert_last(tail, head, value);
+        return;
+    }
+    else{
+        int count =1;
+        while(count < index-1){
+            pointer = pointer-> next;
+            count ++;
+        }
+        temp ->next = pointer -> next ;
+        pointer->next = temp;
+        
+    }
+    
+    
+}
+
